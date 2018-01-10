@@ -26,4 +26,9 @@ function commentDOMObject(commentJSON) {
 
 // Makes API requests and calls helper functions
 function renderStories() {
+	const storiesDiv = document.getElementById('stories');
+
+  get(API_ENDPOINT_START + '/api/stories', {}, function(storiesArr) {
+    console.log(storiesArr);
+  });
 }
