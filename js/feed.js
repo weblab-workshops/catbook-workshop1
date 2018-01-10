@@ -37,6 +37,21 @@ function storyDOMObject(storyJSON) {
 
 // Creates a comment block for a story
 function commentDOMObject(commentJSON) {
+  commentDiv = document.createElement('div');
+  commentDiv.setAttribute('id', commentJSON._id);
+  commentDiv.className = 'comment mb-2';
+
+  commentCreatorSpan = document.createElement('a');
+  commentCreatorSpan.className = 'comment-creator';
+  commentCreatorSpan.innerHTML = commentJSON.creator_name;
+  commentDiv.appendChild(commentCreatorSpan);
+
+  commentContentSpan = document.createElement('span');
+  commentContentSpan.className = 'comment-content';
+  commentContentSpan.innerHTML = ' | ' + commentJSON.content;
+  commentDiv.appendChild(commentContentSpan);
+
+  return commentDiv;
 }
 
 // Makes API requests and calls helper functions
@@ -46,6 +61,14 @@ function renderStories() {
     for (let i = 0; i < storiesArr.length; i++) {
       const currentStory = storiesArr[i];
       storiesDiv.prepend(storyDOMObject(currentStory));
+
+      get(API_ENDPOINT_START + '/api/comment', { 'parent': currentStory._id }, function(commentsArr) {
+        for (let j = 0; j < commentsArr.length; j++) {
+          const currentComment = commentsArr[j];
+          const commentDiv = document.getElementById(currentComment.parent + '-comments');
+          commentDiv.appendChild(commentDOMObject(currentComment));
+        }
+      });
     }
   });
 }
