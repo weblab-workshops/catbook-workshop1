@@ -1,8 +1,9 @@
-const API_ENDPOINT_START = 'http://google-catbook.herokuapp.com/';
+const API_ENDPOINT_START = 'http://google-catbook.herokuapp.com';
 
 // GET /api/stories fetches all stories
 // GET /api/comment fetches all comments for a story, given the story's id (passed as the 'parent' parameter)
 
+// Example of a story object:
 // {
 //   _id: "5a53b37189c7bb15141e9e40",
 //   creator_name: "Danny Tang", 
@@ -13,6 +14,7 @@ const API_ENDPOINT_START = 'http://google-catbook.herokuapp.com/';
 function storyDOMObject(storyJSON) {
 }
 
+// Example of a comment object
 // {
 //   _id: "5a53ba14a6078f28283eb9a1",
 //   creator_name: "Rupayan Neogy", 
@@ -26,8 +28,6 @@ function commentDOMObject(commentJSON) {
 
 // Makes API requests and calls helper functions
 function renderStories() {
-	const storiesDiv = document.getElementById('stories');
-
   get(API_ENDPOINT_START + '/api/stories', {}, function(storiesArr) {
     console.log(storiesArr);
   });
