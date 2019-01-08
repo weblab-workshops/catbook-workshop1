@@ -1,4 +1,4 @@
-const API_ENDPOINT_START = 'http://google-catbook.herokuapp.com/';
+const API_ENDPOINT_START = 'http://google-catbook.herokuapp.com';
 
 // GET /api/stories fetches all stories
 // GET /api/comment fetches all comments for a story, given the story's id (passed as the 'parent' parameter)
