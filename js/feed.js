@@ -50,16 +50,16 @@ function storyDOMObject(storyJSON) {
 
 // Creates a comment block for a story
 function commentDOMObject(commentJSON) {
-  commentDiv = document.createElement('div');
+  const commentDiv = document.createElement('div');
   commentDiv.setAttribute('id', commentJSON._id);
   commentDiv.className = 'comment mb-2';
 
-  commentCreatorSpan = document.createElement('a');
+  const commentCreatorSpan = document.createElement('a');
   commentCreatorSpan.className = 'comment-creator';
   commentCreatorSpan.innerHTML = commentJSON.creator_name;
   commentDiv.appendChild(commentCreatorSpan);
 
-  commentContentSpan = document.createElement('span');
+  const commentContentSpan = document.createElement('span');
   commentContentSpan.className = 'comment-content';
   commentContentSpan.innerHTML = ' | ' + commentJSON.content;
   commentDiv.appendChild(commentContentSpan);
