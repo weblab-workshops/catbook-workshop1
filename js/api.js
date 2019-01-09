@@ -8,7 +8,7 @@ function formatParams(params) {
     .join('&');
 }
 
-// params is given as a JSON
+// params is given as a JavaScript object
 function get(endpoint, params, successCallback, failureCallback) {
   const xhr = new XMLHttpRequest();
   const fullPath = endpoint + '?' + formatParams(params);
